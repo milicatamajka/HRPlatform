@@ -20,9 +20,9 @@ namespace HRPlatform.Database.Repositories
             return candidate;
         }
 
-        public Candidate GetById(int id)
+        public Candidate GetById(int candidateId)
         {
-            var candidate = _context.Candidates.Include(c => c.Skills).FirstOrDefault(c => c.Id == id);
+            var candidate = _context.Candidates.Include(c => c.Skills).FirstOrDefault(c => c.Id == candidateId);
             if (candidate == null) throw new Exception("Candidate not found.");
             return candidate;
         }
@@ -32,6 +32,12 @@ namespace HRPlatform.Database.Repositories
             _context.Candidates.Update(candidate);
             _context.SaveChanges();
             return candidate;
+        }
+
+        public void Delete(Candidate candidate)
+        {
+            _context.Candidates.Remove(candidate);
+            _context.SaveChanges() ;
         }
     }
 }

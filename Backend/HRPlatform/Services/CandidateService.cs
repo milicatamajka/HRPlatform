@@ -55,5 +55,11 @@ namespace HRPlatform.Services
                 throw new Exception("Candidate does not have this skill.");
             }
         }
+
+        public void Delete(int candidateId)
+        {
+            var candidate = _candidateDbRepository.GetById(candidateId);
+            _candidateDbRepository.Delete(candidate);
+        }
     }
 }
