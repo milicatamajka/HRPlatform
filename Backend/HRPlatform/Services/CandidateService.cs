@@ -67,15 +67,15 @@ namespace HRPlatform.Services
         {
             List<Candidate> candidates;
 
-            if (!string.IsNullOrEmpty(name) != null && skillIds != null)
+            if (!string.IsNullOrEmpty(name) && skillIds != null && skillIds.Count > 0)
             {
                 candidates = _candidateDbRepository.GetByNameAndSkills(name, skillIds);
             }
-            else if (name != null)
+            else if (!string.IsNullOrEmpty(name))
             {
                 candidates = _candidateDbRepository.GetByName(name);
             }
-            else if (skillIds != null)
+            else if (skillIds != null && skillIds.Count > 0)
             {
                 candidates = _candidateDbRepository.GetBySkills(skillIds);
             }
