@@ -1,5 +1,6 @@
 ﻿using HRPlatform.Database.Repositories.Interfaces;
 using HRPlatform.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HRPlatform.Database.Repositories
 {
@@ -16,6 +17,13 @@ namespace HRPlatform.Database.Repositories
         {
             _context.Skills.Add(skill);
             _context.SaveChanges();
+            return skill;
+        }
+
+        public Skill GetById(int skillId) 
+        { 
+            var skill = _context.Skills.Include(s => s.Candidates).FirstOrDefault(s => s.Id == skillId);
+            if (skill == null) throw new Exception("Skill not found.");
             return skill;
         }
     }

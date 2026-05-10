@@ -20,5 +20,12 @@ namespace HRPlatform.Controllers
             var result = _candidateService.Create(candidateDto);
             return Ok(result);
         }
+
+        [HttpPut("{candidateId}/add-skill/{skillId}")]
+        public IActionResult AddSkill(int candidateId, int skillId)
+        {
+            _candidateService.AddSkill(candidateId, skillId);
+            return Ok();
+        }
     }
 }
