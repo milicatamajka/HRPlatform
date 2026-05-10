@@ -1,4 +1,4 @@
-﻿using HRPlatform.Model;
+﻿using HRPlatform.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace HRPlatform.Database

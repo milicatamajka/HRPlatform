@@ -1,5 +1,10 @@
 using HRPlatform.Database;
+using HRPlatform.Database.Repositories;
+using HRPlatform.Database.Repositories.Interfaces;
+using HRPlatform.Services;
+using HRPlatform.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +17,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(config => { }, typeof(Program).Assembly);
+builder.Services.AddScoped<ICandidateDbRepository, CandidateDbRepository>();
+builder.Services.AddScoped<ICandidateService, CandidateService>();
 
 var app = builder.Build();
 

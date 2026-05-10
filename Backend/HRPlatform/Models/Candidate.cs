@@ -1,4 +1,4 @@
-﻿namespace HRPlatform.Model
+﻿namespace HRPlatform.Models
 {
     public class Candidate
     {
