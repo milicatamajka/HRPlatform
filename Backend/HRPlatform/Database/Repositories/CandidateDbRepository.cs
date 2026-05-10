@@ -39,5 +39,27 @@ namespace HRPlatform.Database.Repositories
             _context.Candidates.Remove(candidate);
             _context.SaveChanges() ;
         }
+
+        public List<Candidate> GetAll()
+        {
+            return _context.Candidates.Include(c => c.Skills).ToList();
+        }
+
+        public List<Candidate> GetByName(string name) 
+        {
+            return _context.Candidates.Include(c => c.Skills).Where(c => c.Name.ToLower().Contains(name.ToLower())).ToList();
+        }
+
+        public List<Candidate> GetBySkills(List<int> skillIds)
+        {
+            var candidates = _context.Candidates.Include(c => c.Skills);
+            return candidates.Where(c => c.Skills.Any(s => skillIds.Contains(s.Id))).ToList();
+        }
+
+        public List<Candidate> GetByNameAndSkills(string name, List<int> skillIds)
+        {
+            var candidates = _context.Candidates.Include(c => c.Skills);
+            return candidates.Where(c => c.Name.ToLower().Contains(name.ToLower()) && c.Skills.Any(s => skillIds.Contains(s.Id))).ToList();
+        }
     }
 }

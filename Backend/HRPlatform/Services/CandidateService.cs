@@ -1,9 +1,10 @@
-﻿using HRPlatform.Models;
+﻿using AutoMapper;
+using HRPlatform.Database.Repositories.Interfaces;
 using HRPlatform.Dtos;
 using HRPlatform.Mappers;
-using AutoMapper;
+using HRPlatform.Models;
 using HRPlatform.Services.Interfaces;
-using HRPlatform.Database.Repositories.Interfaces;
+using Microsoft.AspNetCore.Routing.Matching;
 
 namespace HRPlatform.Services
 {
@@ -60,6 +61,30 @@ namespace HRPlatform.Services
         {
             var candidate = _candidateDbRepository.GetById(candidateId);
             _candidateDbRepository.Delete(candidate);
+        }
+
+        public List<CandidateDto> SearchByNameAndSkills(string name, List<int> skillIds)
+        {
+            List<Candidate> candidates;
+
+            if (!string.IsNullOrEmpty(name) != null && skillIds != null)
+            {
+                candidates = _candidateDbRepository.GetByNameAndSkills(name, skillIds);
+            }
+            else if (name != null)
+            {
+                candidates = _candidateDbRepository.GetByName(name);
+            }
+            else if (skillIds != null)
+            {
+                candidates = _candidateDbRepository.GetBySkills(skillIds);
+            }
+            else
+            {
+                candidates = _candidateDbRepository.GetAll();
+            }
+            
+            return _mapper.Map<List<CandidateDto>>(candidates);
         }
     }
 }

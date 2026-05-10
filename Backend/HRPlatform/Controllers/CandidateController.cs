@@ -41,6 +41,13 @@ namespace HRPlatform.Controllers
             _candidateService.Delete(candidateId);
             return Ok();
         }
+
+        [HttpGet("search")]
+        public ActionResult<List<CandidateDto>> SearchByNameAndSkill([FromQuery]string name, [FromQuery]List<int> skillIds)
+        {
+            var result = _candidateService.SearchByNameAndSkills(name, skillIds);
+            return Ok(result);
+        }
         
     }
 }
