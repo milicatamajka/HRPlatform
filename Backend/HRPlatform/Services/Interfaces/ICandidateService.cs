@@ -6,5 +6,9 @@ namespace HRPlatform.Services.Interfaces
     public interface ICandidateService
     {
         public CandidateDto Create(CandidateDto candidateDto);
+        public void AddSkill(int candidateId, int skillId);
+        public void RemoveSkill(int candidateId, int skillId);
+        public void Delete(int candidateId);
+        public List<CandidateDto> SearchByNameAndSkills(string name, List<int> skillIds);
     }
 }

@@ -20,5 +20,34 @@ namespace HRPlatform.Controllers
             var result = _candidateService.Create(candidateDto);
             return Ok(result);
         }
+
+        [HttpPut("{candidateId}/add-skill/{skillId}")]
+        public IActionResult AddSkill(int candidateId, int skillId)
+        {
+            _candidateService.AddSkill(candidateId, skillId);
+            return Ok();
+        }
+
+        [HttpDelete("{candidateId}/delete-skill/{skillId}")]
+        public IActionResult RemoveSkill(int candidateId, int skillId)
+        {
+            _candidateService.RemoveSkill(candidateId, skillId);
+            return Ok();
+        }
+
+        [HttpDelete("{candidateId}")]
+        public IActionResult Delete(int candidateId)
+        {
+            _candidateService.Delete(candidateId);
+            return Ok();
+        }
+
+        [HttpGet("search")]
+        public ActionResult<List<CandidateDto>> SearchByNameAndSkill([FromQuery]string name, [FromQuery]List<int> skillIds)
+        {
+            var result = _candidateService.SearchByNameAndSkills(name, skillIds);
+            return Ok(result);
+        }
+        
     }
 }
