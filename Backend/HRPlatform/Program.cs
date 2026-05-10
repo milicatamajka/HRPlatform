@@ -19,8 +19,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(config => { }, typeof(Program).Assembly);
+
 builder.Services.AddScoped<ICandidateDbRepository, CandidateDbRepository>();
 builder.Services.AddScoped<ICandidateService, CandidateService>();
+builder.Services.AddScoped<ISkillDbRepository, SkillDbRepository>();
+builder.Services.AddScoped<ISkillService, SkillService>();
 
 var app = builder.Build();
 
