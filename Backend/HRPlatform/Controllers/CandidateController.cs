@@ -27,5 +27,12 @@ namespace HRPlatform.Controllers
             _candidateService.AddSkill(candidateId, skillId);
             return Ok();
         }
+
+        [HttpDelete("{candidateId}/delete-skill/{skillId}")]
+        public IActionResult RemoveSkill(int candidateId, int skillId)
+        {
+            _candidateService.RemoveSkill(candidateId, skillId);
+            return Ok();
+        }
     }
 }

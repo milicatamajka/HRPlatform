@@ -40,5 +40,20 @@ namespace HRPlatform.Services
             _candidateDbRepository.Update(candidate);
 
         }
+
+        public void RemoveSkill(int candidateId, int skillId)
+        {
+            var candidate = _candidateDbRepository.GetById(candidateId);
+            var skill = _skillDbRepository.GetById(skillId);
+
+            if (candidate.Skills.Any(s => s.Id == skillId)){
+                candidate.Skills.Remove(skill);
+                _candidateDbRepository.Update(candidate);
+            }
+            else
+            {
+                throw new Exception("Candidate does not have this skill.");
+            }
+        }
     }
 }
