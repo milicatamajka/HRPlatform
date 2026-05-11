@@ -18,6 +18,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("React", policy =>
+    {
+        policy.WithOrigins("http://localhost:5173").AllowAnyMethod().AllowAnyHeader();
+    });
+});
+
 builder.Services.AddAutoMapper(config => { }, typeof(Program).Assembly);
 
 builder.Services.AddScoped<ICandidateDbRepository, CandidateDbRepository>();
@@ -37,5 +45,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("React");
 
 app.Run();

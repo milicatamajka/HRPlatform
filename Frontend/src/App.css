@@ -1,0 +1,44 @@
+body{
+  background-color:rgba(7, 23, 48, 0.863);
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
+  color:peru;
+  padding: 20px;
+}
+
+.forms-container{
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.card {
+  flex: 0;
+  margin-bottom: 20px;
+  background-color:rgba(248, 229, 208, 0.863);
+  color: peru;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.input {
+  padding: 5px;
+  margin: 5px;
+  max-width: 350px;
+  max-height: 50px;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  width: 100px;
+  max-height: 80px;
+  align-self: center;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: peru;
+  padding: 5px;
+  margin-top: 8px;
+  border-radius: 8px;
+}
