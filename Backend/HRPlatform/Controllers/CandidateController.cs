@@ -43,7 +43,7 @@ namespace HRPlatform.Controllers
         }
 
         [HttpGet("search")]
-        public ActionResult<List<CandidateDto>> SearchByNameAndSkill([FromQuery]string name, [FromQuery]List<int> skillIds)
+        public ActionResult<List<CandidateDto>> SearchByNameAndSkill([FromQuery]string? name, [FromQuery]List<int>? skillIds)
         {
             var result = _candidateService.SearchByNameAndSkills(name, skillIds);
             return Ok(result);
