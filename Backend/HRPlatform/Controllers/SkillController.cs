@@ -22,5 +22,12 @@ namespace HRPlatform.Controllers
             var result = _skillService.Create(skillDto);
             return Ok(result);
         }
+
+        [HttpGet]
+        public ActionResult<List<SkillDto>> GetAll()
+        {
+            var result = _skillService.GetAll();
+            return Ok(result);
+        }
     }
 }

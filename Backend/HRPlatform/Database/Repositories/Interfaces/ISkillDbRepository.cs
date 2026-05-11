@@ -6,5 +6,6 @@ namespace HRPlatform.Database.Repositories.Interfaces
     {
         public Skill Create (Skill skill);
         public Skill GetById(int skillId);
+        public List<Skill> GetAll();
     }
 }

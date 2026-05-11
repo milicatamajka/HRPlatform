@@ -24,5 +24,11 @@ namespace HRPlatform.Services
             return _mapper.Map<SkillDto>(skill);
         }
 
+        public List<SkillDto> GetAll()
+        {
+            var skills = _skillDbRepository.GetAll();
+            return _mapper.Map<List<SkillDto>>(skills);
+        }
+
     }
 }
