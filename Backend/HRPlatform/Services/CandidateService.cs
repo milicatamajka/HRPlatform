@@ -23,6 +23,17 @@ namespace HRPlatform.Services
         public CandidateDto Create(CandidateDto candidateDto)
         {
             var candidate = _mapper.Map<Candidate>(candidateDto);
+
+            string candidateEmail = candidate.Email;
+            var candidates = _candidateDbRepository.GetAll();
+            foreach (var c in candidates)
+            {
+                if (c.Email.ToLower().Equals(candidateEmail.ToLower()))
+                {
+                    throw new Exception("Email is already in use.");
+                }
+            }
+
             _candidateDbRepository.Create(candidate);
             return _mapper.Map<CandidateDto>(candidate);
         }

@@ -26,7 +26,7 @@ namespace HRPlatform.Services
             var skills = _skillDbRepository.GetAll();
             foreach (var s in skills)
             {
-                if(s.Name.ToLower() == skillName.ToLower())
+                if(s.Name.ToLower().Equals(skillName.ToLower()))
                 {
                     throw new Exception("Skill already exists.");
                 }
