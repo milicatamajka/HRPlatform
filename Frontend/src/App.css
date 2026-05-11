@@ -1,30 +1,36 @@
 body{
-  background-color:rgba(7, 23, 48, 0.863);
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;
-  color:peru;
-  padding: 20px;
+  background-color:rgba(249, 249, 247, 0.927);
+  font-family:Arial, Helvetica, sans-serif;
+  color:rgb(248, 248, 248);
+  margin: 0px;
 }
 
-.forms-container{
+.container{
   display: flex;
+  flex-wrap: wrap;
   gap: 50px;
   align-items: flex-start;
+  background-color: rgb(210, 210, 219);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px;
+  
 }
 
 .card {
   flex: 0;
-  margin-bottom: 20px;
-  background-color:rgba(248, 229, 208, 0.863);
-  color: peru;
+  margin: 20px;
+  background-color:rgba(255, 255, 255, 0.863);
+  color: rgb(188, 91, 31);
   padding: 15px;
   border-radius: 8px;
+  min-width: 250px;
+  min-height: 290px;
 }
 
 .input {
   padding: 5px;
-  margin: 5px;
   max-width: 350px;
-  max-height: 50px;
 }
 
 .form-column {
@@ -37,35 +43,37 @@ body{
   max-height: 80px;
   align-self: center;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: peru;
-  padding: 5px;
-  margin: 10px;
+  background-color: rgb(188, 91, 31);
+  color: beige;
+  padding: 10px;
+  margin: 15px;
   border-radius: 8px;
-}
-
-.search-container{
-  display: flex;
-  gap: 50px;
-  align-items: flex-start;
-  background-color: peru;
-  padding: 15px;
 }
 
 .skills-container{
-  flex: 1;
+  flex: 0;
   flex-direction: row;
-  margin-bottom: 20px;
-  background-color:rgba(248, 229, 208, 0.863);
-  color: peru;
-  padding: 15px;
+  display: flex;
+  align-items: center;
+  margin: 20px;
+  background-color:rgba(255, 255, 255, 0.863);
+  color: rgb(188, 91, 31);
+  padding: 25px;
   border-radius: 8px;
+  gap: 10px;
 }
 
 .header{
-  background-color: peru;
+  background-color: rgb(188, 91, 31);
   color: white;
-  padding: 20px;
-  text-align: center;
+  padding: 30px;
+  text-align: left;
   margin-bottom: 40px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.input-search{
+  padding: 5px;
+  max-width: 125px;
+  max-height: 25px;
+  margin-right: 25px;
 }

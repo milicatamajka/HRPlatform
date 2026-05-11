@@ -76,29 +76,34 @@ function App() {
       <header className='header'>
         <h1>HR Platform</h1>
       </header>
-      <div className="forms-container">
+      <div className="container">
         <div className='card'>
-          <h2>New candidate</h2>
+          <h2>Add a new candidate</h2>
           <form onSubmit={handleCandidateSubmit} className='form-column'>
-            <input className='input' placeholder='Full name' value={candidateName} onChange={e => setCandidateName(e.target.value)}></input>
+            <p>Full name:</p>
+            <input className='input' value={candidateName} onChange={e => setCandidateName(e.target.value)}></input>
+            <p>Date of birth:</p>
             <input className='input' type='date' value={candidateBirth} onChange={e => setCandidateBirth(e.target.value)}></input>
-            <input className='input' placeholder='Phone number' value={candidatePhone} onChange={e => setCandidatePhone(e.target.value)}></input>
-            <input className='input' placeholder='Email' value={candidateEmail} onChange={e => setCandidateEmail(e.target.value)}></input>
+            <p>Phone number:</p>
+            <input className='input' placeholder='+3816...' value={candidatePhone} onChange={e => setCandidatePhone(e.target.value)}></input>
+            <p>E-mail:</p>
+            <input className='input' value={candidateEmail} onChange={e => setCandidateEmail(e.target.value)}></input>
             <button className='button' type='submit'>Create</button>
           </form>
         </div>
         <div className='card'>
-          <h2>New skill</h2>
-          <form onSubmit={handleSkillSubmit}>
-            <input className='input' placeholder='Skill name' value={skillName} onChange={e => setSkillName(e.target.value)}></input>
+          <h2>Add a new skill</h2>
+          <form onSubmit={handleSkillSubmit}  className='form-column'>
+            <p>Name:</p>
+            <input className='input' placeholder='C#, Java, English...' value={skillName} onChange={e => setSkillName(e.target.value)}></input>
             <button className='button' type='submit'>Create</button>
           </form>
         </div>
       </div>
-      <div className='search-container'>
+      <div className='container'>
         <div className='skills-container'>
           <p>Filter by name or skills:</p>
-          <input className='input' placeholder='Search...' value={searchCandidate} onChange={e => setSearchCandidate(e.target.value)}></input>
+          <input className='input-search' placeholder='Search...' value={searchCandidate} onChange={e => setSearchCandidate(e.target.value)}></input>
           {allSkills.map(s => (
             <label key={s.id}>
               <input type='checkbox' checked={selectedSkills.includes(s.id)} onChange={() => handleToggleSkills(s.id)}></input>
@@ -109,8 +114,7 @@ function App() {
           <button className='button' onClick={handleClearSearch}>Clear</button>
         </div>
         <div className='candidates'>
-          <p>List of candidates:</p>
-          <div className='forms-container'>
+          <div className='container'>
             {allCandidates.map(c => (
               <div key={c.id} className='card'>
                 <h2>{c.name}</h2>
