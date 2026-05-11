@@ -60,6 +60,10 @@ namespace HRPlatform.Services
         public void Delete(int candidateId)
         {
             var candidate = _candidateDbRepository.GetById(candidateId);
+            if (candidate == null)
+            {
+                throw new Exception("Candidate does not exist.");
+            }
             _candidateDbRepository.Delete(candidate);
         }
 
