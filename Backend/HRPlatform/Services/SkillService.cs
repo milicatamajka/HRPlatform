@@ -20,6 +20,18 @@ namespace HRPlatform.Services
         public SkillDto Create(SkillDto skillDto)
         {
             var skill = _mapper.Map<Skill>(skillDto);
+
+            string skillName = skill.Name;
+            skillName = skillName.Trim();
+            var skills = _skillDbRepository.GetAll();
+            foreach (var s in skills)
+            {
+                if(s.Name.ToLower() == skillName.ToLower())
+                {
+                    throw new Exception("Skill already exists.");
+                }
+            }
+
             _skillDbRepository.Create(skill);
             return _mapper.Map<SkillDto>(skill);
         }
