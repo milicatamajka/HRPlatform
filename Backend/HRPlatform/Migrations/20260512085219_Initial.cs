@@ -66,9 +66,21 @@ namespace HRPlatform.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Candidates_Email",
+                table: "Candidates",
+                column: "Email",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CandidateSkill_SkillsId",
                 table: "CandidateSkill",
                 column: "SkillsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Skills_Name",
+                table: "Skills",
+                column: "Name",
+                unique: true);
         }
 
         /// <inheritdoc />
