@@ -34,6 +34,11 @@ namespace HRPlatform.Services
                 }
             }
 
+            if (candidate.BirthDate > DateOnly.FromDateTime(DateTime.Now))
+            {
+                throw new Exception("Date can't be in the future.");
+            }
+
             _candidateDbRepository.Create(candidate);
             return _mapper.Map<CandidateDto>(candidate);
         }
@@ -64,7 +69,7 @@ namespace HRPlatform.Services
             }
             else
             {
-                throw new Exception("Candidate does not have this skill.");
+                throw new Exception("Candidate doesn't have this skill.");
             }
         }
 
@@ -73,7 +78,7 @@ namespace HRPlatform.Services
             var candidate = _candidateDbRepository.GetById(candidateId);
             if (candidate == null)
             {
-                throw new Exception("Candidate does not exist.");
+                throw new Exception("Candidate doesn't exist.");
             }
             _candidateDbRepository.Delete(candidate);
         }
