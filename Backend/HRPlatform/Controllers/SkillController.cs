@@ -17,10 +17,31 @@ namespace HRPlatform.Controllers
         }
 
         [HttpPost]
-        public ActionResult<SkillDto> Create([FromBody] SkillDto skillDto) 
-        { 
-            var result = _skillService.Create(skillDto);
-            return Ok(result);
+        public ActionResult<SkillDto> Create([FromBody] SkillDto skillDto)
+        {
+            try
+            {
+                var result = _skillService.Create(skillDto);
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            } 
+        }
+
+        [HttpGet]
+        public ActionResult<List<SkillDto>> GetAll()
+        {
+            try
+            {
+                var result = _skillService.GetAll();
+                return Ok(result);
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

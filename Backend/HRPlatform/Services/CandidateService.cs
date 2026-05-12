@@ -23,6 +23,22 @@ namespace HRPlatform.Services
         public CandidateDto Create(CandidateDto candidateDto)
         {
             var candidate = _mapper.Map<Candidate>(candidateDto);
+
+            string candidateEmail = candidate.Email;
+            var candidates = _candidateDbRepository.GetAll();
+            foreach (var c in candidates)
+            {
+                if (c.Email.ToLower().Equals(candidateEmail.ToLower()))
+                {
+                    throw new Exception("Email is already in use.");
+                }
+            }
+
+            if (candidate.BirthDate > DateOnly.FromDateTime(DateTime.Now))
+            {
+                throw new Exception("Date can't be in the future.");
+            }
+
             _candidateDbRepository.Create(candidate);
             return _mapper.Map<CandidateDto>(candidate);
         }
@@ -53,13 +69,17 @@ namespace HRPlatform.Services
             }
             else
             {
-                throw new Exception("Candidate does not have this skill.");
+                throw new Exception("Candidate doesn't have this skill.");
             }
         }
 
         public void Delete(int candidateId)
         {
             var candidate = _candidateDbRepository.GetById(candidateId);
+            if (candidate == null)
+            {
+                throw new Exception("Candidate doesn't exist.");
+            }
             _candidateDbRepository.Delete(candidate);
         }
 

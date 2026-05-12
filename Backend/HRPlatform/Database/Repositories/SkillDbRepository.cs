@@ -26,5 +26,10 @@ namespace HRPlatform.Database.Repositories
             if (skill == null) throw new Exception("Skill not found.");
             return skill;
         }
+
+        public List<Skill> GetAll()
+        {
+            return _context.Skills.ToList();
+        }
     }
 }
