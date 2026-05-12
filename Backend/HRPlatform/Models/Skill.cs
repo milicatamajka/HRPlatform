@@ -7,6 +7,11 @@
         public List<Candidate> Candidates { get; set; } = new List<Candidate>();
 
         public Skill() { }
+
+        public Skill(string name)
+        {
+            Name = name;
+        }
         public Skill(int id, string name)
         {
             Id = id;

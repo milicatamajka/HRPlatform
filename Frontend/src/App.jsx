@@ -39,7 +39,7 @@ function App() {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(candidate)
-    }).then(res => res.json())
+    }).then(res => res.json()).then(() => handleClearCandidate())
   }
 
   const handleSkillSubmit = (e) => {
@@ -52,7 +52,11 @@ function App() {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(skill)
-    }).then(res => res.json())
+    }).then(res => {
+      if(res.ok){
+        handleClearSkill();
+      }
+    })
   }
 
   const handleSearch = () => {
@@ -69,6 +73,17 @@ function App() {
     setSearchCandidate('');
     setSelectedSkills([]);
     setAllCandidates([]);
+  }
+
+  const handleClearCandidate = () => {
+    setCandidateName('');
+    setCandidateBirth('');
+    setCandidatePhone('');
+    setCandidateEmail('');
+  }
+
+  const handleClearSkill = () => {
+    setSkillName('');
   }
 
   return (

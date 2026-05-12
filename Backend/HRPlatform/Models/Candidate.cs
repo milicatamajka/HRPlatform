@@ -11,6 +11,14 @@
 
         public Candidate() { }
 
+        public Candidate(string name, DateOnly birthDate, string phoneNumber, string email)
+        {
+            Name = name;
+            BirthDate = birthDate;
+            PhoneNumber = phoneNumber;
+            Email = email;
+        }
+
         public Candidate(int id, string name, DateOnly birthDate, string phoneNumber, string email)
         {
             Id = id;

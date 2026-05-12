@@ -37,7 +37,7 @@ namespace HRPlatform.Migrations
                     b.ToTable("CandidateSkill");
                 });
 
-            modelBuilder.Entity("HRPlatform.Model.Candidate", b =>
+            modelBuilder.Entity("HRPlatform.Models.Candidate", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,10 +62,13 @@ namespace HRPlatform.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique();
+
                     b.ToTable("Candidates");
                 });
 
-            modelBuilder.Entity("HRPlatform.Model.Skill", b =>
+            modelBuilder.Entity("HRPlatform.Models.Skill", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -79,18 +82,21 @@ namespace HRPlatform.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Skills");
                 });
 
             modelBuilder.Entity("CandidateSkill", b =>
                 {
-                    b.HasOne("HRPlatform.Model.Candidate", null)
+                    b.HasOne("HRPlatform.Models.Candidate", null)
                         .WithMany()
                         .HasForeignKey("CandidatesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HRPlatform.Model.Skill", null)
+                    b.HasOne("HRPlatform.Models.Skill", null)
                         .WithMany()
                         .HasForeignKey("SkillsId")
                         .OnDelete(DeleteBehavior.Cascade)
